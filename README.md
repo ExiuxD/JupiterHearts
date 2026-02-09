@@ -17,26 +17,7 @@ El proyecto se ejecuta completamente en el navegador, utilizando la **webcam** d
 
 ---
 
-## Estructura del proyecto
-La estructura del proyecto se organizó de la siguiente manera:
 
-facemesh/
-│
-├── assets/
-│ ├── hat.png
-│ └── mustache.png
-│
-├── js/
-│ ├── faceMesh.js
-│ ├── faceMesh2.js
-│ └── Sobel.js
-│
-├── index.html
-├── filtro.html
-└── Sobel.html
-
-
----
 
 ## Descripción de archivos
 
