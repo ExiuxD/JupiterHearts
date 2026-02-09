@@ -96,16 +96,16 @@ function drawHat(landmarks) {
   const faceWidth = Math.hypot(pR.x - pL.x, pR.y - pL.y);
   const angle = Math.atan2(pR.y - pL.y, pR.x - pL.x);
 
-  // Sombrero más ancho que la cara
-  const w = faceWidth * 2.0;
-  const h = w * (hatImg.height / hatImg.width);
+ // Tamaño del sombrero (ligeramente más compacto)
+const w = faceWidth * 1.85;
+const h = w * (hatImg.height / hatImg.width);
 
-  // Colocarlo un poco ARRIBA de la frente
-  const yOffset = h * 0.55;
+// Offset vertical: MÁS BAJO para que se apoye en la cabeza
+const yOffset = h * 0.40;
 
-  // Centro del sombrero: arriba de foreheadTop
-  const cx = pT.x;
-  const cy = pT.y - yOffset;
+const cx = pT.x;
+const cy = pT.y - yOffset;
+
 
   drawOverlayImage(hatImg, cx, cy, w, h, angle);
 }
