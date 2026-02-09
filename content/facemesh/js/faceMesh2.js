@@ -101,7 +101,7 @@ const w = faceWidth * 1.85;
 const h = w * (hatImg.height / hatImg.width);
 
 // Offset vertical: MÁS BAJO para que se apoye en la cabeza
-const yOffset = h * 0.40;
+const yOffset = h * 0.25;
 
 const cx = pT.x;
 const cy = pT.y - yOffset;
