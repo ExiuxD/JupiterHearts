@@ -1,37 +1,86 @@
-# JupyterLite Demo
+# Punto 23 – Detección de Bordes con Sobel (OpenCV.js)
 
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/demo)
+## Descripción general
+En este punto se implementó un programa en **HTML y JavaScript** que utiliza el algoritmo **Sobel** para la detección de bordes en tiempo real a partir de la **webcam**.  
+La implementación se realizó usando **OpenCV.js**, lo que permite ejecutar procesamiento de imágenes directamente en el navegador sin necesidad de instalaciones adicionales.
 
-JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
+El programa es compatible con **GitHub Pages**, por lo que puede ejecutarse completamente en línea.
 
-## ✨ Try it in your browser ✨
+---
 
-➡️ **https://jupyterlite.github.io/demo**
+## Tecnologías utilizadas
+- **HTML5**: estructura de la página.
+- **JavaScript**: lógica del procesamiento de imágenes.
+- **OpenCV.js**: librería de visión por computadora.
+- **WebRTC (getUserMedia)**: acceso a la cámara web.
+- **GitHub Pages**: despliegue del proyecto.
 
-![github-pages](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
+---
 
-## Requirements
+## Funcionamiento del algoritmo Sobel
+El operador de Sobel es un método clásico de procesamiento de imágenes que permite detectar bordes mediante el cálculo de gradientes de intensidad.
 
-JupyterLite is being tested against modern web browsers:
+El algoritmo:
+1. Convierte la imagen original a **escala de grises**.
+2. Aplica dos kernels Sobel:
+   - Uno para detectar cambios horizontales (Sobel X).
+   - Otro para detectar cambios verticales (Sobel Y).
+3. Combina ambos gradientes para obtener la magnitud del borde.
+4. Aplica un **umbral** para resaltar únicamente los bordes más relevantes.
 
-- Firefox 90+
-- Chromium 89+
+Este método se basa en **derivadas aproximadas mediante diferencias finitas**.
 
-## Deploy your JupyterLite website on GitHub Pages
+---
 
-Check out the guide on the JupyterLite documentation: https://jupyterlite.readthedocs.io/en/latest/quickstart/deploy.html
+## Flujo del programa
+1. Se solicita acceso a la webcam del usuario.
+2. Cada frame del video se dibuja en un elemento `canvas`.
+3. El contenido del canvas se convierte en una matriz de OpenCV.
+4. Se aplica el operador Sobel sobre la imagen en escala de grises.
+5. El resultado se muestra nuevamente en el canvas en tiempo real.
+6. Un control deslizante permite ajustar el **umbral** de detección de bordes.
 
-## Further Information and Updates
+---
 
-For more info, keep an eye on the JupyterLite documentation:
+## Archivo `index.html`
+Este archivo:
+- Define la interfaz gráfica.
+- Incluye un `video` oculto para la webcam.
+- Usa un `canvas` para mostrar el resultado del Sobel.
+- Carga OpenCV.js desde un CDN.
+- Enlaza el archivo `sobel.js`.
 
-- How-to Guides: https://jupyterlite.readthedocs.io/en/latest/howto/index.html
-- Reference: https://jupyterlite.readthedocs.io/en/latest/reference/index.html
+---
 
-This template provides the Pyodide kernel (`jupyterlite-pyodide-kernel`), the JavaScript kernel (`jupyterlite-javascript-kernel`), and the p5 kernel (`jupyterlite-p5-kernel`), along with other
-optional utilities and extensions to make the JupyterLite experience more enjoyable. See the
-[`requirements.txt` file](requirements.txt) for a list of all the dependencies provided.
+## Archivo `sobel.js`
+Este archivo contiene la lógica principal:
+- Inicialización de la webcam.
+- Espera a que OpenCV.js esté completamente cargado.
+- Conversión de imágenes a escala de grises.
+- Aplicación de Sobel en los ejes X y Y.
+- Combinación de gradientes.
+- Aplicación de un umbral ajustable.
+- Renderizado del resultado en tiempo real.
 
-For a template based on the Xeus kernel, see the [`jupyterlite/xeus-python-demo` repository](https://github.com/jupyterlite/xeus-python-demo)
+---
 
+## Resultados
+El programa permite visualizar claramente los **bordes faciales y estructurales** de la imagen capturada por la cámara.  
+El ajuste del umbral permite observar cómo varía la sensibilidad del algoritmo ante cambios de intensidad.
+
+---
+
+## Comparación con métodos modernos
+A diferencia de técnicas basadas en **redes neuronales convolucionales (CNN)**, como MediaPipe Face Mesh, el operador Sobel:
+- No requiere entrenamiento previo.
+- No identifica semánticamente una cara.
+- Únicamente resalta cambios de intensidad.
+
+Esto permite comparar un enfoque **clásico** de visión por computadora con enfoques modernos basados en aprendizaje profundo.
+
+---
+
+## Conclusión
+El operador Sobel es una herramienta fundamental en el procesamiento de imágenes que permite detectar bordes de forma eficiente.  
+Su implementación en JavaScript mediante OpenCV.js demuestra que es posible realizar visión por computadora en tiempo real directamente en el navegador, siendo ideal para fines educativos y comparativos.
 
