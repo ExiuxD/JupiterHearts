@@ -18,7 +18,6 @@ El proyecto se ejecuta completamente en el navegador, utilizando la **webcam** d
 ---
 
 
-
 ## Descripción de archivos
 
 ### 📁 `assets/`
@@ -26,7 +25,7 @@ Contiene los recursos gráficos en formato PNG con fondo transparente utilizados
 - **hat.png**: imagen del sombrero.
 - **mustache.png**: imagen del bigote.
 
-Estos elementos se superponen sobre el rostro detectado.
+Estos elementos se superponen sobre el rostro detectado
 
 ---
 
