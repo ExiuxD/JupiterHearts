@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobel - Webcam (OpenCV.js)</title>
+  <style>
+    body{
+      margin:0; background:#111; color:#eee; font-family:system-ui, Arial;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      min-height:100vh; gap:12px;
+    }
+    .wrap{ position:relative; }
+    canvas{ border:1px solid #333; max-width:95vw; height:auto; }
+    video{ display:none; }
+    .status{ font-size:14px; opacity:.9; }
+    .controls{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
+    label{ display:flex; gap:8px; align-items:center; }
+    input[type="range"]{ width:240px; }
+  </style>
+</head>
+<body>
+
+  <h2>Sobel en tiempo real (OpenCV.js)</h2>
+  <div class="status" id="status">Cargando OpenCV.js…</div>
+
+  <div class="controls">
+    <label>Umbral:
+      <input id="th" type="range" min="0" max="255" value="80">
+      <span id="thVal">80</span>
+    </label>
+  </div>
+
+  <div class="wrap">
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <!-- OpenCV.js (CDN) -->
+  <script async src="https://docs.opencv.org/4.x/opencv.js"></script>
+
+  <!-- Tu código -->
+  <script src="./js/Sobel.js"></script>
+</body>
+</html>
